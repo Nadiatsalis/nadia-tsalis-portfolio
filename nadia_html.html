@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadia Tsalis Fahmiyah | Business Analyst & Product Strategy Portfolio</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --accent-pink: #f43f5e;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+            padding: 80px 0 60px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-bio {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent-blue);
+            padding: 16px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 16px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .social-btn {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Common Section Layout */
+        section {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        /* Education & Experience Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 28px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            color: var(--accent-blue);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-body p, .card-body li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        /* Detailed Projects Section */
+        .project-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 36px;
+            margin-bottom: 32px;
+            transition: 0.3s;
+        }
+
+        .project-block:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .project-badge {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .project-header-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .project-tagline {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+        }
+
+        .project-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-item h5 {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .detail-item p {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .bullet-list {
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Tools Pills */
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tool-pill {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Contact & Hire Me Form Section */
+        .hire-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: var(--accent-gradient);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">Nadia Tsalis Fahmiyah</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#tools">Tools</a>
+                <a href="#hire-me" style="color: var(--accent-blue); font-weight: 600;">Hire Me</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="about" style="border:none;">
+            <div>
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    Available for BA & Product Strategy Roles
+                </div>
+                <h1>Hello, I'm <span>Nadia!</span></h1>
+                <p class="hero-subtitle"><strong>Business Analyst / Product Strategy & Data-Driven Decision Making</strong></p>
+                
+                <div class="hero-bio">
+                    Aspiring Business Analyst currently deepening my expertise through a Business Analyst & Product Strategy Bootcamp[cite: 2]. Background in Information Systems, with hands-on experience in requirement analysis, business process modeling, and system design[cite: 2].
+                </div>
+
+                <div class="hero-ctas">
+                    <!-- Button Hire Me (Directly Scrolls to Form at Bottom) -->
+                    <a href="#hire-me" class="btn-primary"><i class="fa-solid fa-briefcase"></i> Hire Me</a>
+                    <a href="#projects" class="btn-secondary">View Case Studies</a>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <!-- Sesuaikan nama file foto formal kamu -->
+                <img src="foto_nadia.jpeg" alt="Nadia Tsalis Fahmiyah" class="profile-img">
+                <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Nadia Tsalis Fahmiyah</h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">nadiatsalisf@gmail.com | +62 823-3611-4125</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/nadia-tsalis" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:nadiatsalisf@gmail.com" class="social-btn"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://wa.me/6282336114125" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Do Section -->
+        <section>
+            <h2 class="section-title">What I Do? (and love doing)</h2>
+            <p class="section-desc">I enjoy analyzing business processes and turning them into practical, data-driven solutions—from understanding the "why" behind a problem to designing workflows that actually work[cite: 2]. I'm especially drawn to the research and problem-solving side of building a product[cite: 2].</p>
+
+            <div class="tools-grid">
+                <div class="tool-pill" style="border-color: var(--accent-blue);"><i class="fa-solid fa-chart-line"></i> Business Analyst</div>
+                <div class="tool-pill" style="border-color: var(--accent-green);"><i class="fa-solid fa-magnifying-glass"></i> Requirement Analyst</div>
+                <div class="tool-pill" style="border-color: var(--accent-pink);"><i class="fa-solid fa-lightbulb"></i> Product Strategist</div>
+                <div class="tool-pill" style="border-color: var(--accent-blue);"><i class="fa-solid fa-database"></i> Data-Driven Solutions</div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">My Education</h2>
+            <p class="section-desc">My academic background in Information Systems, combined with continuous learning through professional programs[cite: 2].</p>
+
+            <div class="grid-2">
+                <div class="info-card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Dibimbing.id</div>
+                            <div class="card-subtitle">Business Analyst & Product Strategy Bootcamp</div>
+                        </div>
+                        <span class="card-date">2026 - Present</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Focused on Business Analysis, Product & Project Management, and OKR implementation[cite: 2].</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Jember University</div>
+                            <div class="card-subtitle">Bachelor of Computer Science in Information Systems</div>
+                        </div>
+                        <span class="card-date">2018 - 2025</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>GPA:</strong> 3.47 / 4.00[cite: 2]</p>
+                        <p><strong>Thesis:</strong> "User Satisfaction Analysis of the J-Mbako Application Using the End-User Computing Satisfaction (EUCS) Method"[cite: 2]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">My Experience</h2>
+            <p class="section-desc">Hands-on experience in requirement analysis, system design, and business process improvement[cite: 2].</p>
+
+            <div class="grid-2">
+                <div class="info-card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">System Analyst</div>
+                            <div class="card-subtitle">Software Engineering Techniques (Academic Project)</div>
+                        </div>
+                        <span class="card-date">May - Aug 2023</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Led requirement analysis and business process redesign for a 4-member team project[cite: 2].</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">System Designer</div>
+                            <div class="card-subtitle">Software Development (Academic Project)</div>
+                        </div>
+                        <span class="card-date">May - Aug 2023</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Translated business requirements into structured system models using UML[cite: 2].</p>
+                    </div>
+                </div>
+
+                <div class="info-card" style="grid-column: 1 / -1;">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Web Designer & System Analyst</div>
+                            <div class="card-subtitle">Kominfo Jember (Internship)</div>
+                        </div>
+                        <span class="card-date">Feb - Mar 2021</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Improved website usability and documented system integration processes[cite: 2].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Project Portfolio</h2>
+            <p class="section-desc">A selection of projects where I applied requirement analysis, business process modeling, and research to solve real problems[cite: 2].</p>
+
+            <!-- Project 01 -->
+            <div class="project-block">
+                <div class="project-badge">Project 01 • Business Analysis Case Study</div>
+                <h3 class="project-header-title">Reimagining Sociolla's Click & Collect Experience</h3>
+                <p class="project-tagline">From identifying operational challenges to designing a seamless omnichannel pickup experience[cite: 2].</p>
+
+                <div class="project-details-grid">
+                    <div class="detail-item">
+                        <h5>Business Problem</h5>
+                        <p>Click & Collect relied on manual store confirmation via chat (WhatsApp), taking 81–178 mins[cite: 2]. 51% of users did not complete payment[cite: 2].</p>
+                    </div>
+                    <div class="detail-item">
+                        <h5>Proposed Solution</h5>
+                        <p>Auto-Confirmation Feature: Automated system validation for payment & stock, updating order status instantly[cite: 2].</p>
+                    </div>
+                    <div class="detail-item">
+                        <h5>Deliverables</h5>
+                        <p>PRD, Competitor Benchmark, User Stories, AS-IS vs TO-BE BPMN, User Flow, High-Fidelity Prototype (Figma)[cite: 2].</p>
+                    </div>
+                </div>
+
+                <h4 style="margin-bottom: 12px; font-size: 1.05rem;">Key Research & Quantitative Findings:</h4>
+                <ul class="bullet-list">
+                    <li>Average failed confirmation time: <strong>178 minutes</strong> | Successful: <strong>81 minutes</strong>[cite: 2].</li>
+                    <li><strong>51% of users</strong> did not complete payment due to delays[cite: 2].</li>
+                    <li>Average order value at risk: <strong>Rp650,000 - Rp940,000</strong>[cite: 2].</li>
+                    <li>Design principles applied: <em>Clarity, Trust, and Convenience</em>[cite: 2].</li>
+                </ul>
+            </div>
+
+            <!-- Project 02 -->
+            <div class="project-block">
+                <div class="project-badge">Project 02 • Business Intelligence Dashboard</div>
+                <h3 class="project-header-title">Tracing the Sales Loss Report (Amazon India Q2 2022)</h3>
+                <p class="project-tagline">From uncovering revenue loss patterns to delivering data-driven business insights[cite: 2].</p>
+
+                <div class="project-details-grid">
+                    <div class="detail-item">
+                        <h5>Objective & Tools</h5>
+                        <p>Identify revenue loss drivers using SQL, Excel, and Power BI with a Star Schema Data Model[cite: 2].</p>
+                    </div>
+                    <div class="detail-item">
+                        <h5>Key Impact Identified</h5>
+                        <p><strong>8.80% Lost Revenue (6.92M INR)</strong> due to cancellations across transactions[cite: 2].</p>
+                    </div>
+                    <div class="detail-item">
+                        <h5>Critical Triangle</h5>
+                        <p>Maharashtra (13.3M INR), Karnataka (10.5M INR), and Telangana (6.9M INR) identified as growth regions[cite: 2].</p>
+                    </div>
+                </div>
+
+                <h4 style="margin-bottom: 12px; font-size: 1.05rem;">Strategic Pillars & Insights:</h4>
+                <ul class="bullet-list">
+                    <li><strong>Revenue Growth & Efficiency:</strong> Monitored AOV and proved promotions drive high-value carts[cite: 2].</li>
+                    <li><strong>Financial Leakage Mitigation:</strong> Converted cancellation rates into monetary impact (6.92M INR)[cite: 2].</li>
+                    <li><strong>Operational Optimization:</strong> Recommended local courier audits in top cancelled regions[cite: 2].</li>
+                </ul>
+            </div>
+
+            <!-- Project 03 -->
+            <div class="project-block">
+                <div class="project-badge">Project 03 • API Integration Case Study</div>
+                <h3 class="project-header-title">Payment Link via Midtrans API Integration</h3>
+                <p class="project-tagline">Understanding API integration to automate payment link generation[cite: 2].</p>
+
+                <div class="project-details-grid">
+                    <div class="detail-item">
+                        <h5>Core Overview</h5>
+                        <p>Enables merchants to programmatically generate payment links via API for high-volume transactions[cite: 2].</p>
+                    </div>
+                    <div class="detail-item">
+                        <h5>Key Features</h5>
+                        <p>Automated link generation, real-time Webhooks, configurable expiry, secure hosted page[cite: 2].</p>
+                    </div>
+                    <div class="detail-item">
+                        <h5>Business Value</h5>
+                        <p>Automates invoice creation and improves operational efficiency[cite: 2].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools">
+            <h2 class="section-title">Tools I'm Fluent In</h2>
+            <p class="section-desc">The tools I use to analyze, design, and communicate solutions effectively[cite: 2].</p>
+
+            <div class="tools-grid">
+                <div class="tool-pill"><i class="fa-solid fa-file-excel" style="color: #34d399;"></i> Excel</div>
+                <div class="tool-pill"><i class="fa-solid fa-cubes" style="color: #38bdf8;"></i> Enterprise Architect</div>
+                <div class="tool-pill"><i class="fa-solid fa-pen-ruler" style="color: #f43f5e;"></i> Miro</div>
+                <div class="tool-pill"><i class="fa-brands fa-trello" style="color: #60a5fa;"></i> Trello</div>
+                <div class="tool-pill"><i class="fa-solid fa-sitemap" style="color: #fbbf24;"></i> Draw.io / Bizagi</div>
+                <div class="tool-pill"><i class="fa-brands fa-figma" style="color: #f43f5e;"></i> Figma</div>
+                <div class="tool-pill"><i class="fa-solid fa-database" style="color: #38bdf8;"></i> SQL</div>
+                <div class="tool-pill"><i class="fa-solid fa-palette" style="color: #fbbf24;"></i> Adobe Illustrator</div>
+                <div class="tool-pill"><i class="fa-solid fa-table" style="color: #34d399;"></i> Google Sheets</div>
+                <div class="tool-pill"><i class="fa-solid fa-note-sticky" style="color: #a78bfa;"></i> Notion</div>
+                <div class="tool-pill"><i class="fa-brands fa-jira" style="color: #60a5fa;"></i> Jira</div>
+                <div class="tool-pill"><i class="fa-solid fa-file-powerpoint" style="color: #f43f5e;"></i> PowerPoint</div>
+            </div>
+        </section>
+
+        <!-- Hire Me / Contact Form Section -->
+        <section id="hire-me">
+            <h2 class="section-title" style="text-align: center;">Let's Work Together!</h2>
+            <p class="section-desc" style="text-align: center; max-width: 600px; margin: 0 auto 32px;">
+                Have an opportunity, a project idea, or just want to connect? Fill out the form below or send me a message!
+            </p>
+
+            <div class="hire-section">
+                <!-- FORM DENGAN LINK GOOGLE APPS SCRIPT KAMU -->
+                <form action="https://script.google.com/macros/s/AKfycbzb2tA0-VYmrsyax0_H0xkE8r5Gp6hG6Nv853y--2jwUt7iEyReUpdjIt2KkSl6YifLgA/exec" method="POST">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="Name" class="form-control" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="Email" class="form-control" placeholder="e.g. john@company.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject / Position</label>
+                        <input type="text" id="subject" name="Subject" class="form-control" placeholder="e.g. Business Analyst Opportunity / Project Discussion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="Message" class="form-control" placeholder="Hi Nadia, I would like to discuss..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fa-regular fa-paper-plane"></i> Send Message / Hire Me</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Nadia Tsalis Fahmiyah • Business Analyst & Product Strategy</p>
+        </footer>
+    </div>
+
+</body>
+</html>
