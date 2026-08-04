@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midtrans API Integration Case Study | Nadia Tsalis Fahmiyah</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-light: #f5f2eb;
+      --bg-dark: #191613;
+      --card-dark: #221e1a;
+      --card-light: #ffffff;
+      --accent-yellow: #f5a623;
+      --accent-blue: #0ea5e9;
+      --accent-green: #10b981;
+      --text-dark: #191613;
+      --text-light: #f5f2eb;
+      --text-muted: #8c857b;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --border-light: rgba(0, 0, 0, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* --- NAVIGATION --- */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; position: sticky; top: 0; background: rgba(245, 242, 235, 0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border-light); }
+    .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: var(--accent-yellow); border-radius: 50%; position: relative; }
+    .logo-text { font-weight: 800; font-size: 1.3rem; color: var(--text-dark); }
+    .btn-back { background: var(--bg-dark); color: var(--text-light); padding: 10px 22px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+    .btn-back:hover { background: #000; transform: translateX(-3px); }
+
+    /* --- HERO HEADER --- */
+    .hero-case { padding: 60px 0 40px; }
+    .case-badge-group { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .badge-pill { padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; }
+    .badge-yellow { background: var(--accent-yellow); color: var(--text-dark); }
+    .badge-blue { background: rgba(14, 165, 233, 0.15); color: var(--accent-blue); border: 1px solid rgba(14, 165, 233, 0.3); }
+    
+    .case-title { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .case-subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 850px; margin-bottom: 40px; }
+
+    /* --- SECTION CARDS & LAYOUT --- */
+    .section-card { background: #ffffff; border-radius: 28px; padding: 40px; border: 1px solid var(--border-light); margin-bottom: 40px; }
+    .section-dark-card { background: var(--bg-dark); color: var(--text-light); border-radius: 28px; padding: 40px; margin-bottom: 40px; }
+    .section-head-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+    .section-head-title i { color: var(--accent-yellow); }
+
+    /* GRID & CARDS */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feature-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); padding: 24px; border-radius: 20px; }
+    .feature-card.light { background: var(--bg-light); border: 1px solid var(--border-light); }
+    
+    /* FLOW STEPS */
+    .flow-step-row { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px; }
+    .flow-num { width: 36px; height: 36px; background: var(--accent-yellow); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
+    .flow-content h4 { font-size: 1.05rem; margin-bottom: 4px; }
+    .flow-content p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* FOOTER CALLOUT */
+    .cta-footer { text-align: center; padding: 60px 0; background: var(--bg-dark); color: #fff; border-radius: 32px; margin-top: 60px; }
+
+    @media (max-width: 768px) {
+      .case-title { font-size: 2.2rem; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- NAVIGATION BAR -->
+    <nav>
+      <a href="index.html" class="logo-container">
+        <div class="logo-icon"></div>
+        <span class="logo-text">Nadia.</span>
+      </a>
+      <a href="index.html#projects" class="btn-back">
+        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+      </a>
+    </nav>
+
+    <!-- HERO CASE STUDY HEADER -->
+    <header class="hero-case">
+      <div class="case-badge-group">
+        <span class="badge-pill badge-yellow">API Integration & System Analysis</span>
+        <span class="badge-pill badge-blue">Payment Gateway Solution</span>
+        <span class="badge-pill" style="background: #e0dcd3;">Project 03</span>
+      </div>
+      <h1 class="case-title">Payment Link via Midtrans API Integration</h1>
+      <p class="case-subtitle">
+        Understanding API integration to automate payment link generation, replace manual dashboard processes, and streamline high-volume digital payment workflows.
+      </p>
+    </header>
+
+    <!-- SECTION 1: PROJECT OVERVIEW -->
+    <section class="section-card">
+      <h2 class="section-head-title"><i class="fa-solid fa-code"></i> Project Overview</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">
+        This project explores the implementation of the Midtrans Payment Link via API to automate payment link generation for merchants. Unlike manual creation through the dashboard, programmatic generation makes payment processes scalable, efficient, and reliable for high-volume operations.
+      </p>
+      
+      <div class="grid-3">
+        <div class="feature-card light">
+          <h4 style="color: var(--accent-blue); margin-bottom: 8px;"><i class="fa-solid fa-gear"></i> Automation</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Eliminates manual dashboard entry by generating links directly via system backend requests.</p>
+        </div>
+        <div class="feature-card light">
+          <h4 style="color: var(--accent-blue); margin-bottom: 8px;"><i class="fa-solid fa-bolt"></i> Scalability</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Designed specifically to support high-volume transaction processing seamlessly.</p>
+        </div>
+        <div class="feature-card light">
+          <h4 style="color: var(--accent-blue); margin-bottom: 8px;"><i class="fa-solid fa-shield-halved"></i> Security</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Utilizes secure hosted payment pages and real-time webhook status updates.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: KEY FEATURES (DARK CARD) -->
+    <section class="section-dark-card">
+      <h2 class="section-head-title" style="color: #fff;"><i class="fa-solid fa-list-check"></i> Key Features of the API Integration</h2>
+      <p style="color: var(--text-muted); margin-bottom: 32px;">
+        Core functionalities built into the integration to maximize administrative efficiency and user trust.
+      </p>
+
+      <div class="grid-2">
+        <div class="feature-card">
+          <h3 style="color: var(--accent-yellow); margin-bottom: 8px;">1. Automated Link Generation</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Creates unique payment URLs programmatically upon checkout or invoice issuance without human intervention.</p>
+        </div>
+        <div class="feature-card">
+          <h3 style="color: var(--accent-yellow); margin-bottom: 8px;">2. Real-Time Webhook Notifications</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Instantly synchronizes transaction status updates back to the merchant system as soon as payment is completed.</p>
+        </div>
+        <div class="feature-card">
+          <h3 style="color: var(--accent-yellow); margin-bottom: 8px;">3. Configurable Expiry & Limits</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Allows customization of link validity periods and usage limitations to mitigate fraud and manage pending invoices.</p>
+        </div>
+        <div class="feature-card">
+          <h3 style="color: var(--accent-yellow); margin-bottom: 8px;">4. Secure Hosted Payment Page</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Redirects customers to Midtrans' certified secure checkout page supporting multiple payment channels (VA, e-wallets, credit cards).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: API INTEGRATION & PAYMENT FLOW -->
+    <section class="section-card">
+      <h2 class="section-head-title"><i class="fa-solid fa-arrows-split-up-and-left"></i> API Integration & Payment Flow</h2>
+      <p style="color: var(--text-muted); margin-bottom: 32px;">
+        The system architecture connects the merchant backend securely with Midtrans API endpoints.
+      </p>
+
+      <div class="grid-2">
+        <!-- Integration Flow Explanation -->
+        <div class="feature-card light">
+          <h3 style="font-size: 1.1rem; margin-bottom: 14px; color: var(--text-dark);"><i class="fa-solid fa-network-wired"></i> Integration Architecture Flow</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+            The implementation starts with merchant account setup and API credential configuration. The backend system sends HTTP requests to create payment links, stores transaction parameters, listens for real-time webhooks, and rigorously validates integration stability in the <strong>Sandbox Environment</strong> prior to production deployment.
+          </p>
+        </div>
+
+        <!-- 5 Step Payment Flow -->
+        <div class="feature-card light">
+          <h3 style="font-size: 1.1rem; margin-bottom: 14px; color: var(--text-dark);"><i class="fa-solid fa-list-ol"></i> End-to-End Payment Flow</h3>
+          
+          <div class="flow-step-row">
+            <div class="flow-num">1</div>
+            <div class="flow-content">
+              <h4>Request Creation</h4>
+              <p>Merchant backend generates payment link request via API.</p>
+            </div>
+          </div>
+
+          <div class="flow-step-row">
+            <div class="flow-num">2</div>
+            <div class="flow-content">
+              <h4>URL Generation</h4>
+              <p>Midtrans returns a unique, secure payment URL.</p>
+            </div>
+          </div>
+
+          <div class="flow-step-row">
+            <div class="flow-num">3</div>
+            <div class="flow-content">
+              <h4>Link Distribution</h4>
+              <p>Payment link is shared directly with the customer.</p>
+            </div>
+          </div>
+
+          <div class="flow-step-row">
+            <div class="flow-num">4</div>
+            <div class="flow-content">
+              <h4>Checkout Completion</h4>
+              <p>Customer completes payment through the hosted page.</p>
+            </div>
+          </div>
+
+          <div class="flow-step-row" style="margin-bottom: 0;">
+            <div class="flow-num">5</div>
+            <div class="flow-content">
+              <h4>Webhook Sync</h4>
+              <p>Midtrans sends real-time status notification to merchant system.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: BUSINESS VALUE & RECOMMENDATIONS -->
+    <section class="section-dark-card" style="background: #151210;">
+      <h2 class="section-head-title" style="color: #fff;"><i class="fa-solid fa-circle-check"></i> Business Value & Recommendations</h2>
+      <p style="color: var(--text-muted); margin-bottom: 32px;">
+        Key takeaways and best practices derived from integrating programmatic payment solutions.
+      </p>
+
+      <div class="grid-2">
+        <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 20px; border: 1px solid var(--border-color);">
+          <h3 style="color: var(--accent-green); margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-chart-line"></i> Core Business Value</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            Payment Link via API empowers merchants to fully automate invoice creation, drastically reduce administrative workload, eliminate manual entry errors, and reliably support high-volume digital commerce through direct system-to-system integration.
+          </p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 20px; border: 1px solid var(--border-color);">
+          <h3 style="color: var(--accent-yellow); margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-lightbulb"></i> Strategic Recommendations</h3>
+          <ul style="color: var(--text-muted); padding-left: 18px; font-size: 0.9rem; line-height: 1.6;">
+            <li style="margin-bottom: 8px;">Prioritize API integration for recurring billing, invoicing, and event ticketing models.</li>
+            <li style="margin-bottom: 8px;">Always configure precise link expiration windows and usage limits for enhanced security.</li>
+            <li>Rigorously validate all payment scenarios and webhook responses in the sandbox environment before going live.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER CALLOUT -->
+    <div class="cta-footer">
+      <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px;">Interested in discussing this API Integration?</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">I am happy to discuss technical specifications, JSON request payloads, or webhook handling logic.</p>
+      <a href="index.html#hire-me" class="btn-back" style="display: inline-flex; background: var(--accent-yellow); color: #000;">
+        Contact Nadia <i class="fa-solid fa-paper-plane"></i>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

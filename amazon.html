@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazon India Sales Loss Case Study | Nadia Tsalis Fahmiyah</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-light: #f5f2eb;
+      --bg-dark: #191613;
+      --card-dark: #221e1a;
+      --card-light: #ffffff;
+      --accent-yellow: #f5a623;
+      --accent-orange: #ff9900;
+      --accent-red: #ef4444;
+      --accent-green: #10b981;
+      --text-dark: #191613;
+      --text-light: #f5f2eb;
+      --text-muted: #8c857b;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --border-light: rgba(0, 0, 0, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* --- NAVIGATION --- */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; position: sticky; top: 0; background: rgba(245, 242, 235, 0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border-light); }
+    .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 32px; height: 32px; background: var(--accent-yellow); border-radius: 50%; position: relative; }
+    .logo-text { font-weight: 800; font-size: 1.3rem; color: var(--text-dark); }
+    .btn-back { background: var(--bg-dark); color: var(--text-light); padding: 10px 22px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+    .btn-back:hover { background: #000; transform: translateX(-3px); }
+
+    /* --- HERO HEADER --- */
+    .hero-case { padding: 60px 0 40px; }
+    .case-badge-group { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .badge-pill { padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; }
+    .badge-yellow { background: var(--accent-yellow); color: var(--text-dark); }
+    .badge-orange { background: rgba(255, 153, 0, 0.15); color: var(--accent-orange); border: 1px solid rgba(255, 153, 0, 0.3); }
+    
+    .case-title { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .case-subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 850px; margin-bottom: 40px; }
+
+    /* --- SECTION CARDS & LAYOUT --- */
+    .section-card { background: #ffffff; border-radius: 28px; padding: 40px; border: 1px solid var(--border-light); margin-bottom: 40px; }
+    .section-dark-card { background: var(--bg-dark); color: var(--text-light); border-radius: 28px; padding: 40px; margin-bottom: 40px; }
+    .section-head-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+    .section-head-title i { color: var(--accent-yellow); }
+
+    /* GRID & METRICS */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+
+    .metric-card { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); padding: 24px; border-radius: 20px; text-align: center; }
+    .metric-val { font-size: 2.2rem; font-weight: 800; color: var(--accent-orange); margin-bottom: 4px; }
+    .metric-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
+
+    /* STAR SCHEMA & METHODOLOGY */
+    .schema-box { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; }
+    .schema-center { background: var(--accent-orange); color: #000; padding: 16px; border-radius: 12px; font-weight: 800; text-align: center; margin-bottom: 20px; }
+    .schema-dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+    .schema-dim-item { background: rgba(255, 255, 255, 0.08); padding: 12px; border-radius: 10px; font-size: 0.85rem; text-align: center; border: 1px dashed rgba(255, 255, 255, 0.2); }
+
+    /* 3 STRATEGIC PILLARS */
+    .pillar-card { background: var(--bg-light); border-radius: 20px; padding: 28px; border: 1px solid var(--border-light); }
+    .pillar-card h3 { color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+
+    /* REGIONAL MATRIX TABLE */
+    .table-container { overflow-x: auto; margin-top: 16px; }
+    .custom-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .custom-table th, .custom-table td { padding: 16px; border-bottom: 1px solid var(--border-light); }
+    .custom-table th { background: var(--bg-light); font-weight: 800; font-size: 0.9rem; }
+    .custom-table td { font-size: 0.95rem; }
+
+    /* PROTOTYPE / DASHBOARD DISPLAY */
+    .dashboard-preview { background: #1f1b18; border-radius: 20px; padding: 20px; text-align: center; border: 1px solid var(--border-color); }
+    .dashboard-preview img { width: 100%; height: auto; border-radius: 12px; display: block; }
+
+    /* FOOTER CALLOUT */
+    .cta-footer { text-align: center; padding: 60px 0; background: var(--bg-dark); color: #fff; border-radius: 32px; margin-top: 60px; }
+
+    @media (max-width: 768px) {
+      .case-title { font-size: 2.2rem; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- NAVIGATION BAR -->
+    <nav>
+      <a href="index.html" class="logo-container">
+        <div class="logo-icon"></div>
+        <span class="logo-text">Nadia.</span>
+      </a>
+      <a href="index.html#projects" class="btn-back">
+        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+      </a>
+    </nav>
+
+    <!-- HERO CASE STUDY HEADER -->
+    <header class="hero-case">
+      <div class="case-badge-group">
+        <span class="badge-pill badge-yellow">Business Intelligence & Analytics</span>
+        <span class="badge-pill badge-orange">E-Commerce & Logistics</span>
+        <span class="badge-pill" style="background: #e0dcd3;">Project 02</span>
+      </div>
+      <h1 class="case-title">Tracing Sales Loss Report — Amazon India Q2 2022</h1>
+      <p class="case-subtitle">
+        Uncovering potential revenue leakage in Amazon India transactions by analyzing cancellation patterns, promotion effectiveness, regional performance gaps, and shipping methods using SQL, Excel, and Power BI.
+      </p>
+    </header>
+
+    <!-- SECTION 1: PROJECT OVERVIEW & AT A GLANCE -->
+    <section class="section-card">
+      <h2 class="section-head-title"><i class="fa-solid fa-chart-line"></i> Project Overview</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">
+        During Q2 2022 (April – June 2022), Amazon India experienced high transaction volumes but suffered from noticeable revenue leakage. This project performs an end-to-end data analysis to convert raw transaction records into strategic revenue recovery initiatives.
+      </p>
+
+      <div class="grid-4">
+        <div class="pillar-card" style="padding: 20px;">
+          <p style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">ANALYSIS PERIOD</p>
+          <p style="font-size: 1.1rem; font-weight: 800;">Q2 2022 (Apr - Jun)</p>
+        </div>
+        <div class="pillar-card" style="padding: 20px;">
+          <p style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">DATASET SOURCE</p>
+          <p style="font-size: 1.1rem; font-weight: 800;">Amazon India Sales</p>
+        </div>
+        <div class="pillar-card" style="padding: 20px;">
+          <p style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">ANALYTICAL TOOLS</p>
+          <p style="font-size: 1.1rem; font-weight: 800;">SQL, Excel, Power BI</p>
+        </div>
+        <div class="pillar-card" style="padding: 20px;">
+          <p style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">KEY FOCUS</p>
+          <p style="font-size: 1.1rem; font-weight: 800;">Revenue Leakage Mitigation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: KEY IMPACT & METRICS (DARK CARD) -->
+    <section class="section-dark-card">
+      <h2 class="section-head-title" style="color: #fff;"><i class="fa-solid fa-triangle-exclamation"></i> Key Analytical Takeaways & Revenue Leakage</h2>
+      <p style="color: var(--text-muted); margin-bottom: 32px;">
+        High market demand is proven, but process failures at checkout, payment, or delivery points prevent full revenue realization.
+      </p>
+
+      <div class="grid-4" style="margin-bottom: 40px;">
+        <div class="metric-card">
+          <div class="metric-val" style="color: var(--accent-red);">8.80%</div>
+          <div class="metric-label">Total Lost Revenue Rate</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">6.92M INR</div>
+          <div class="metric-label">Actual Financial Leakage (Value)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">3 Regions</div>
+          <div class="metric-label">"Critical Triangle" Provinces</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">70%</div>
+          <div class="metric-label">Amazon Logistics Fulfillment Share</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 20px; border: 1px solid var(--border-color);">
+          <h3 style="color: var(--accent-orange); margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-filter-circle-dollar"></i> The Financial Leakage</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            A total of <strong>6.92 Million INR</strong> failed to materialize in Q2 2022 due to order cancellations. Converting the 8.80% cancellation rate into tangible monetary value established immediate urgency to audit logistics and payment gateways.
+          </p>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 20px; border: 1px solid var(--border-color);">
+          <h3 style="color: var(--accent-orange); margin-bottom: 12px; font-size: 1.1rem;"><i class="fa-solid fa-truck-fast"></i> Logistics Dependency Risk</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            <strong>70% of total orders</strong> rely directly on Amazon's internal fulfillment network. While maintaining service consistency, this over-reliance creates significant margin risks if operational costs rise or local courier bottlenecks occur.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: DATA MODELING & METHODOLOGY -->
+    <section class="section-dark-card" style="background: #151210;">
+      <h2 class="section-head-title" style="color: #fff;"><i class="fa-solid fa-network-wired"></i> Data Architecture & Methodology</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">
+        To ensure structured data aggregation, raw transaction files were cleansed and structured into a dimensional **Star Schema** model.
+      </p>
+
+      <div class="grid-2">
+        <!-- STAR SCHEMA REPRESENTATION -->
+        <div class="schema-box">
+          <div class="schema-center">
+            FACT TABLE: fact_sales_order_items<br>
+            <span style="font-size: 0.8rem; font-weight: normal;">(Quantity, Net Sales Amount, Order Metrics)</span>
+          </div>
+          <p style="text-align: center; color: var(--accent-yellow); font-size: 0.85rem; margin-bottom: 12px;">CONNECTED DIMENSION TABLES:</p>
+          <div class="schema-dim-grid">
+            <div class="schema-dim-item"><strong>dim_order</strong><br>Order & Channel</div>
+            <div class="schema-dim-item"><strong>dim_product</strong><br>SKU & Category</div>
+            <div class="schema-dim-item"><strong>dim_location</strong><br>State & City</div>
+            <div class="schema-dim-item"><strong>dim_fulfilment</strong><br>Shipping Logistics</div>
+            <div class="schema-dim-item"><strong>dim_promotion</strong><br>Promo Keys</div>
+            <div class="schema-dim-item"><strong>dim_date</strong><br>Time Breakdown</div>
+          </div>
+        </div>
+
+        <!-- METHODOLOGY STEPS -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 16px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-yellow); margin-bottom: 4px;">1. Data Preparation</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Cleaned & standardized raw data, handled null values, and built relational integrity across tables using SQL.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 16px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-yellow); margin-bottom: 4px;">2. Exploratory Data Analysis (EDA)</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Utilized SQL queries and pivot analyses to isolate cancellation spikes, AOV variations, and regional anomalies.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 16px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-yellow); margin-bottom: 4px;">3. Interactive Dashboard Development</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Constructed an intuitive Power BI dashboard for real-time monitoring of revenue metrics and fulfillment KPIs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 3 STRATEGIC PILLARS & REGIONAL MATRIX -->
+    <section class="section-card">
+      <h2 class="section-head-title"><i class="fa-solid fa-chess"></i> 3 Strategic Pillars for Revenue Recovery</h2>
+      <p style="color: var(--text-muted); margin-bottom: 28px;">
+        Translating data exploration into 3 key analytical pillars to drive operational expansion and financial health.
+      </p>
+
+      <div class="grid-3" style="margin-bottom: 40px;">
+        <div class="pillar-card">
+          <h3><i class="fa-solid fa-arrow-trend-up"></i> 1. Revenue Growth & Efficiency</h3>
+          <p style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 8px;"><strong>AOV & Promo Analysis:</strong></p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Compared Average Order Value (AOV) between promo and non-promo users. Proved that promotions effectively drive higher cart values rather than just discount seekers.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <h3><i class="fa-solid fa-shield-halved"></i> 2. Leakage Mitigation</h3>
+          <p style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 8px;"><strong>Top Cancelled Regions:</strong></p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Identified the 3 provinces with the highest cancellation volumes as an early warning trigger for local operational and fulfillment investigations.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <h3><i class="fa-solid fa-boxes-packing"></i> 3. Operational & Logistics</h3>
+          <p style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 8px;"><strong>Fulfillment Optimization:</strong></p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Mapped carrier shipping methods against failure rates to provide concrete evidence for logistics vendor evaluation and SLA enforcement.
+          </p>
+        </div>
+      </div>
+
+      <!-- CRITICAL TRIANGLE MATRIX -->
+      <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 16px;">The "Critical Triangle" Priority Regions</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
+        Market demand in these three regions is exceptionally high, making them the most impactful targets for immediate cancellation reduction and promo expansion.
+      </p>
+
+      <div class="table-container">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Priority Province</th>
+              <th>Total Revenue</th>
+              <th>Cancelled Orders</th>
+              <th>Strategic Action / Lever</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Maharashtra</strong></td>
+              <td><span style="color: var(--accent-orange); font-weight: 700;">13.3M INR</span></td>
+              <td>3.0K Orders</td>
+              <td>Highest growth potential. Immediate courier SLA audit to capture lost demand.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Karnataka</strong></td>
+              <td><span style="color: var(--accent-orange); font-weight: 700;">10.5M INR</span></td>
+              <td>2.2K Orders</td>
+              <td>Optimize local warehouse stock availability to prevent stockout cancellations.</td>
+            </tr>
+            <tr>
+              <td><strong>3. Telangana</strong></td>
+              <td><span style="color: var(--accent-orange); font-weight: 700;">6.9M INR</span></td>
+              <td>1.6K Orders</td>
+              <td>Targeted promotional expansion to boost cart sizes and offset delivery costs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 5: DASHBOARD PREVIEW & RECOMMENDATIONS -->
+    <section class="section-card">
+      <h2 class="section-head-title"><i class="fa-solid fa-lightbulb"></i> Power BI Dashboard & Actionable Recommendations</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">
+        Interactive visual dashboard built in Power BI to give executive stakeholders clear visibility over sales performance and regional risks.
+      </p>
+
+      <div class="dashboard-preview" style="margin-bottom: 32px;">
+        <img src="amazon.png" alt="Amazon India Sales Loss Power BI Dashboard" onerror="this.src='https://via.placeholder.com/1000x500?text=Amazon+India+Power+BI+Dashboard+Preview'">
+      </div>
+
+      <div style="background: rgba(255, 153, 0, 0.08); padding: 28px; border-radius: 20px; border: 1px solid rgba(255, 153, 0, 0.3);">
+        <h3 style="color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;">
+          <i class="fa-solid fa-bullseye"></i> Final Strategic Action Plan
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-dark);">
+          Implement targeted <strong>promotional expansions</strong> in the Critical Triangle (Maharashtra, Karnataka, Telangana) to boost shopping cart values, while conducting <strong>immediate audits of local logistics and stock availability</strong> to minimize cancellations and reduce absolute reliance on a single fulfillment channel.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER CALLOUT -->
+    <div class="cta-footer">
+      <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px;">Interested in discussing this Analysis?</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">I can walk you through the SQL queries, Star Schema data model, or Power BI calculations upon request.</p>
+      <a href="index.html#hire-me" class="btn-back" style="display: inline-flex; background: var(--accent-yellow); color: #000;">
+        Contact Nadia <i class="fa-solid fa-paper-plane"></i>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
